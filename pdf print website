@@ -1,0 +1,10 @@
+import requests
+from weasyprint import HTML
+
+def webpage_to_pdf(url, output="webseite.pdf"):
+    html = requests.get(url).text
+    HTML(string=html, base_url=url).write_pdf(output)
+    print(f"PDF erstellt: {output}")
+
+if __name__ == "__main__":
+    webpage_to_pdf("https://example.com", "seite.pdf")
