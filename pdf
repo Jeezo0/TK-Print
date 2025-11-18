@@ -1,0 +1,22 @@
+from fpdf import FPDF
+
+def create_pdf(output_path="output.pdf"):
+    pdf = FPDF()
+    pdf.add_page()
+
+    # Schriftart setzen
+    pdf.set_font("Arial", size=12)
+
+    # Beispieltext
+    pdf.cell(200, 10, txt="Hallo! Dies ist eine automatisch erzeugte PDF.", ln=True)
+    pdf.ln(10)
+    pdf.multi_cell(0, 10, txt="Hier kann beliebiger Text stehen. "
+                              "Wenn du später Daten einfügen möchtest, "
+                              "kann man das Skript entsprechend erweitern.")
+
+    # PDF speichern
+    pdf.output(output_path)
+    print(f"PDF gespeichert unter: {output_path}")
+
+if __name__ == "__main__":
+    create_pdf("beispiel.pdf")
